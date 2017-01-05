@@ -1,0 +1,18 @@
+TODO:
+
+* check to see if plot_chromosome and shown stimuli match. (at least
+  it seems upside down)
+
+* last response in minimize_stimulus is always zero. repair
+
+* the continue option in waiting for the extraction causes the program
+  to crash. repair.
+
+* figure out why it worked so badly for the cortex
+
+* better way to store all populations and generations, to later see
+  what happened
+
+
+
+*: important

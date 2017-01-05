@@ -1,0 +1,17 @@
+{
+  "name": "vhlab_RunExperiment",
+  "homepage": "https://github.com/VH-Lab/vhlab_RunExperiment",
+  "authors": [
+    "[Stephen D. Van Hooser] <[vanhoosr@brandeis.edu]>"
+  ],
+  "description": "A system for running and performing analysis for visual physiology experiments (visual stimulation, electrophysiology, 2-photon imaging)",
+  "main": "",
+  "license": "MIT",
+  "dependencies": {
+	  "vhlab_toolbox": "git://github.com/VH-Lab/vhlab_toolbox.git",
+	  "vhlab_NewStim": "git://github.com/VH-Lab/vhlab_toolbox.git",
+	  "vhlab_matlibraries": "git://github.com/VH-Lab/vhlab_toolbox.git",
+	  "vhlab_TwoPhoton": "git://github.com/VH-Lab/vhlab_toolbox.git",
+	  "vhlab_thirdparty": "git://github.com/VH-Lab/vhlab_thirdparty.git"
+  }
+}
