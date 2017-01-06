@@ -1,6 +1,6 @@
 {
-  "name": "vhlab_RunExperiment",
-  "homepage": "https://github.com/VH-Lab/vhlab_RunExperiment",
+  "name": "vhlab_mlapp_RunExperiment",
+  "homepage": "https://github.com/VH-Lab/vhlab_mlapp_RunExperiment",
   "authors": [
     "[Stephen D. Van Hooser] <[vanhoosr@brandeis.edu]>"
   ],
@@ -8,10 +8,10 @@
   "main": "",
   "license": "MIT",
   "dependencies": {
-	  "vhlab_toolbox": "git://github.com/VH-Lab/vhlab_toolbox.git",
-	  "vhlab_NewStim": "git://github.com/VH-Lab/vhlab_toolbox.git",
-	  "vhlab_matlibraries": "git://github.com/VH-Lab/vhlab_toolbox.git",
-	  "vhlab_TwoPhoton": "git://github.com/VH-Lab/vhlab_toolbox.git",
+	  "vhlab_mltbx_toolbox": "git://github.com/VH-Lab/vhlab_mltbx_toolbox.git",
+	  "vhlab_mltbx_NewStim": "git://github.com/VH-Lab/vhlab_mltbx_NewStim.git",
+	  "vhlab_mltbx_matlibraries": "git://github.com/VH-Lab/vhlab_mltbx_matlibraries.git",
+	  "vhlab_mlapp_TwoPhoton": "git://github.com/VH-Lab/vhlab_mlapp_TwoPhoton.git",
 	  "vhlab_thirdparty": "git://github.com/VH-Lab/vhlab_thirdparty.git"
   }
 }
