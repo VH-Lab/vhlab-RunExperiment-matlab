@@ -1,6 +1,6 @@
-function NelsonLabToolsInitLocal;
+function RunExperimentInitLocal;
 
- % inits local pathname variables for NelsonLabTools
+ % inits local pathname variables for RunExperiment
 
  % Note: this file really belongs in the configuration folder, but nobody probably edits
  % this file, so we'll put it in the distribution for now.
