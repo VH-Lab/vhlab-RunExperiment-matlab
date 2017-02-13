@@ -144,10 +144,10 @@ switch command,
 
 		case {28},
         		[newrect,dist,screenrect] = getscreentoolparams;
-			myscript = makeorthogonaltrainingstim(ps, [0:30:360-30], screenrect);
+			myscript = makeorthogonaltrainingstim(periodicstim(p), [0:30:360-30], screenrect);
 		case {29},
         		[newrect,dist,screenrect] = getscreentoolparams;
-			myscript = makeorthogonaltrainingstim(ps, [0:30:360-30], screenrect, 0);
+			myscript = makeorthogonaltrainingstim(periodicstim(p), [0:30:360-30], screenrect, 0);
 	end;
 
         if methodPopupValue < 28,
