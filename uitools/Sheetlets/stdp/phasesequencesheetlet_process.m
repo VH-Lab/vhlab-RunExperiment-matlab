@@ -16,6 +16,9 @@ B = [ 8 8 8 8 8 8 8 8];
 B_seq = getfield(load('B_sequences.mat','-mat'),'B_sequences');
 B_seq_steps = 8*ones(1,size(B_seq,1));
 
+S_seq = getfield(load('S_sequences.mat','-mat'),'S_sequences');
+S_seq_steps = 8*ones(1,size(S_seq,1));
+
 command = command(length(typeName)+1:end);
 
 if ~strcmp(command, 'GetVars')&~strcmp(command,'SetVars'),
@@ -67,7 +70,9 @@ switch command,
 		elseif mycode(1)=='B',
 			p.phaseSequence = B_seq(mynum,:);
 			p.phaseSteps = B_seq_steps(mynum);
-		end;
+		elseif mycode(1)=='S',
+			p.phaseSequence = S_seq(mynum,:);
+			p.phaseSteps = S_seq_steps(mynum);		end;
 		dscript = append(dscript,periodicstim(p));
 	end;
         mngray = (p.chromhigh+p.chromlow)/2;
@@ -83,7 +88,10 @@ switch command,
 	for i=1:size(B_seq,1),
 		options{end+1} = ['B' int2str(i)];
 	end;
-	[selection,ok] = listdlg('PromptString','Select sequences','SelectionMode','multiple','ListSize',[160 300],...
+	for i=1:size(S_seq,1),
+		options{end+1} = ['S' int2str(i)];
+	end;
+    [selection,ok] = listdlg('PromptString','Select sequences','SelectionMode','multiple','ListSize',[160 300],...
 		'InitialValue',1:numel(options),'ListString',options);
 	if ok & numel(selection)>1,
 		superstring = '[';
