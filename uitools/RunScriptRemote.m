@@ -65,13 +65,13 @@ if saveit,
 	fid = fopen(FitzInstructionFileName,'wt'); fprintf(fid,'%s',myname); fclose(fid);
 	%nameref = referencesheetlet_process(gcf, 'ref', ds, ['ref' 'GetVars']);
 	%nameref.type = 'singleEC';
-	[nameref,vhlv_channelgroupinginfo,vhlv_filtermapinfo] = getrunexperimentacquisitionlist;
+	[nameref,vh_channelgroupinginfo,vh_filtermapinfo] = getrunexperimentacquisitionlist;
 	saveStructArray([mypath filesep myname filesep 'reference.txt'],nameref);
-	if ~isempty(vhlv_channelgroupinginfo),
-		saveStructArray([mypath filesep myname filesep 'vhlv_channelgrouping.txt'],vhlv_channelgroupinginfo);
+	if ~isempty(vh_channelgroupinginfo),
+		saveStructArray([mypath filesep myname filesep 'vhintan_channelgrouping.txt'],vh_channelgroupinginfo);
 	end;
-	if ~isempty(vhlv_filtermapinfo),
-		saveStructArray([mypath filesep myname filesep 'vhlv_filtermap.txt'],vhlv_filtermapinfo);
+	if ~isempty(vh_filtermapinfo),
+		saveStructArray([mypath filesep myname filesep 'vhintan_filtermap.txt'],vh_filtermapinfo);
 	end;
 	addtag(ds,myname,'stimcommandtime',now);
 end;

@@ -12,7 +12,6 @@ extra10	1	singleEC
 extra11	1	singleEC
 extra12	1	singleEC
 extra13	1	singleEC
-extra13	1	singleEC
 extra14	1	singleEC
 extra15	1	singleEC
 extra16	1	singleEC
