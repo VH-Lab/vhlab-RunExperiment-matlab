@@ -162,7 +162,7 @@ if strcmp(ans,'OK'),
 	drawnow;
 	if vdaqintrinsic, str = str_intrinsic; end;
 	%if lvintrinsic, str = str_lvintrinsic; end;
-	VHLabGlobals;
+	RunExperimentGlobals;
 	if VH_RunStimsLocally==1, % do a local test,
 		MTI2 = NSLoadAndRunTest(thescript);
 	elseif VH_RunStimsLocally==2,

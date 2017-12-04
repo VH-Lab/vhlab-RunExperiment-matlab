@@ -41,7 +41,11 @@ myrects = [];
 lineno = 1;
 
 for i=1:length(signs),
-	if signs(i)==-1, p.flickerType = 1; elseif signs(i)==1, p.flickerType = 0; end;
+	if signs(i)==-1,
+		p.flickerType = 1;
+	elseif signs(i)==1,
+		p.flickerType = 0;
+	end;
 	for j=1:length(offsets),
 		p.lineoffset = offsets(j);
 		p.linenumber = lineno;

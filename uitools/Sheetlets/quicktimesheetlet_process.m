@@ -21,7 +21,7 @@ switch command,
 		set(findobj(fig,'tag',[typeName 'EditBt']),'userdata',varargin{2});
 		p = getparameters(varargin{2});
 		[mypath,myfilename] = fileparts(p.filename);
-		set(findobj(fig,'tag',[typeName 'FileNameTxt'],'string',myfilename));
+		set(findobj(fig,'tag',[typeName 'FileNameTxt']),'string',myfilename);
 	end;
         if length(varargin)>3&~isempty(varargin{3}), set(findobj(fig,'tag',[typeName 'GoodCB']),'value',varargin{3}); end;
         if length(varargin)>4&~isempty(varargin{4}), set(findobj(fig,'tag',[typeName 'AnalyzeBt']),'userdata',varargin{4}); end;
