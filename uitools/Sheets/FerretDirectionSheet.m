@@ -45,7 +45,7 @@ switch command
         gratingsheetlet_process(fig,'TempFreq',usstruct.ds,'TempFreqSetVars','','[0.5 1 2 4 6 8 12 16 20 25 30]','tFrequency','','GratCtrl',0,0,'ref');
         gratingsheetlet_process(fig,'Contrast',usstruct.ds,'ContrastSetVars','','[0:0.1:1]','contrast','','GratCtrl',0,0,'ref');
         gratingsheetlet_process(fig,'SpatPhase',usstruct.ds,'SpatPhaseSetVars','','[[0:pi/6:pi-pi/6] 2*pi+[0:pi/6:pi-pi/6]]','sPhaseShift','','GratCtrl',0,0,'ref');
-	barvelocitysheetlet_process(fig,'BarVel',usstruct.ds,'BarVelSetVars','','logspace(2,0,10)','0.5','','GratCtrl',0,0,'ref');
+	barvelocitysheetlet_process(fig,'BarVel',usstruct.ds,'BarVelSetVars','','[500 250 100 50 25]','[30 0.5 14]','','GratCtrl',0,0,'ref');
 	%lineweightsheetlet_process(fig,'Line',usstruct.ds,'LineSetVars','','[-98:3.5:98]*2','[800 7 0.1]','','GratCtrl',0,0,'ref');
         %lengthwidthsheetlet_process(fig,'LengthWidth',usstruct.ds,'LengthWidthSetVars','','[50:50:450]','[300]','','GratCtrl',0,0,'ref');
         rcgratingsheetlet_process(fig,'RCG',usstruct.ds,'RCGSetVars','','[0:22.5:180-22.5]','orientations','[0.025 0.05 0.1 0.2 0.4 0.8]', 'spatialfrequencies', ...

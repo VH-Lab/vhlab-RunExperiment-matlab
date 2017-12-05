@@ -1,4 +1,4 @@
-function ss=makebarvelocity(orientations,velocities,ctrx,ctry,onoff,monitordistance,eccentricity);
+function ss=makebarvelocity(orientations,velocities,ctrx,ctry,onoff,monitordistance,eccentricity,isi);
 
 ss=stimscript(0);
 
@@ -41,6 +41,7 @@ for O = onoff,
 			p.BG = BG;
 			p.angle = o;
 			p.velocity = v;
+			p.dispprefs = {'BGposttime',isi};
 			
 			sms = shapemoviestim(p);
 			
@@ -54,7 +55,7 @@ for O = onoff,
 			sgn = sign(v);
 			
 			for i=1:bf,
-				pos = struct('x',ctrx-sgn*travel/2*sin(o*pi/180),'y',ctry+sgn*travel/2*cos(o*pi/180));
+				pos = struct('x',ctrx-sgn*pixels_per_deg*travel/2*sin(o*pi/180),'y',ctry+sgn*pixels_per_deg*travel/2*cos(o*pi/180));
 				speed = struct('x',(pixels_per_deg*v/fps)*(sgn)*sin(o*pi/180),...
 						'y',(pixels_per_deg*v/fps)*(-sgn)*cos(o*pi/180));
 				
@@ -70,4 +71,5 @@ for O = onoff,
 		end;
 	end;
 end;
+
 

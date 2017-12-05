@@ -38,7 +38,7 @@ switch command,
         gratCtrl
         [ps,reps,isi,randomize,blank]=gratingcontrolsheetlet_process(fig, gratCtrl, ds, [gratCtrl 'GetVars']);
         p=getparameters(ps);
-        p.dispprefs = {'BGposttime',isi};
+        p.dispprefs = {'BGpretime',isi,'BGposttime',isi};
 	monitordistance = p.distance;
 	angles = [p.angle p.angle+180];
 	if eqlen(p.chromhigh,[0 0 255]),
@@ -53,13 +53,12 @@ switch command,
 	reps = repsisiwidth(1);
 	isi = repsisiwidth(2);
 	width = repsisiwidth(3);
-        p.dispprefs = {'BGposttime',isi};
         p.contrast = 1;
         base = periodicstim(p);
         [newrect,dist,screenrect] = getscreentoolparams;
 	ctrx = mean(newrect([3 1])); ctry = mean(newrect([2 4]));
         foreachstimdolocal({'base'},'recenterstim',{'rect',newrect,'screenrect',screenrect,'params',1});
-        thescript = makebarvelocity(angles,velocities,ctrx,ctry,[1 0],monitordistance,width);
+        thescript = makebarvelocity(angles,velocities,ctrx,ctry,[1 0],monitordistance,width,isi);
         if blank, thescript = addblankstim(thescript,mngray); end;
         thescript = setDisplayMethod(thescript,randomize,reps);
         test=RunScriptRemote(ds,thescript,saveit,0,1);
