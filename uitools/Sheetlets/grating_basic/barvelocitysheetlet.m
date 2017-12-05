@@ -29,10 +29,11 @@ hlist = [hlist h];
 h = uicontrol(edit,'position',[upperLeft(1)+170 upperLeft(2)-7 100 20],'string','[logspace(2,0,10)]','Tag',[typeName 'velocitiesEdit']);
 hlist = [hlist h];
 
-h = uicontrol(txt,'position',[upperLeft(1)+280 upperLeft(2)-7 60 20],'string','[ISI]:','Tag',[typeName 'ISItxt'], 'horizontalalignment', 'left');
+h = uicontrol(txt,'position',[upperLeft(1)+280 upperLeft(2)-7 60 20],'string','[Reps ISI Width]:','Tag',[typeName 'RepsISIWidthtxt'], ...
+	'horizontalalignment', 'left');
 hlist = [hlist h];
 
-h = uicontrol(edit,'position',[upperLeft(1)+350 upperLeft(2)-7 100 20],'string','[0.5]','Tag',[typeName 'ISIEdit']);
+h = uicontrol(edit,'position',[upperLeft(1)+350 upperLeft(2)-7 100 20],'string','[30 0.5 14]','Tag',[typeName 'RepsISIWidthEdit']);
 hlist = [hlist h];
 
 h = uicontrol(button,'position',[upperLeft(1)+460 upperLeft(2)-7 50 20],'string','Run','Tag',[typeName 'RunBt']);

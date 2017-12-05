@@ -1,4 +1,4 @@
-function ss=makebarvelocity(orientations,velocities,ctrx,ctry,onoff,monitordistance);
+function ss=makebarvelocity(orientations,velocities,ctrx,ctry,onoff,monitordistance,eccentricity);
 
 ss=stimscript(0);
 
@@ -11,7 +11,7 @@ NewStimGlobals;
 cm_per_deg = monitordistance * tan(deg2rad(1));
 pixels_per_deg = pixels_per_cm * cm_per_deg;
 fps = 100; % assume 100Hz
-eccentricity = 14; % arbitrary choice
+ % eccentricity = 14; % arbitrary choice
 
 warning('At the present time this function assumes a 100Hz monitor');
 

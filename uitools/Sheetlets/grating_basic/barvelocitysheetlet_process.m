@@ -1,13 +1,13 @@
 function [varargout]=barvelocitysheetlet_process(fig, typeName, ds, command, varargin)
  % var input argument order list:
- % testName,velocitiesstr,isistr,preference,gratCtrl,GoodCB,prefCB,refsh
+ % testName,velocitiesstr,repsisiwidthstr,preference,gratCtrl,GoodCB,prefCB,refsh
 
 command = command(length(typeName)+1:end);
 
 command,
 
 if ~strcmp(command, 'GetVars')&~strcmp(command,'SetVars'),
-    [testName,velocitiesstr,isistr,preference,gratCtrl,GoodCB,prefCB,refsh]=barvelocitysheetlet_process(fig, typeName, ds, [typeName 'GetVars']);
+    [testName,velocitiesstr,repsisiwidthstr,preference,gratCtrl,GoodCB,prefCB,refsh]=barvelocitysheetlet_process(fig, typeName, ds, [typeName 'GetVars']);
 end;
 
 z=geteditor('RunExperiment');
@@ -19,7 +19,7 @@ switch command,
     case 'SetVars',
         if length(varargin)>0&~isempty(varargin{1}), set(findobj(fig,'tag',[typeName 'TestEdit']),'string',varargin{1}); end;
         if length(varargin)>1&~isempty(varargin{2}), set(findobj(fig,'tag',[typeName 'velocitiesEdit']),'string',varargin{2}); end;
-        if length(varargin)>2&~isempty(varargin{3}), set(findobj(fig,'tag',[typeName 'ISIEdit']),'string',varargin{3}); end;
+        if length(varargin)>2&~isempty(varargin{3}), set(findobj(fig,'tag',[typeName 'RepsISIWidthEdit']),'string',varargin{3}); end;
         %if length(varargin)>3&~isempty(varargin{4}), set(findobj(fig,'tag',[typeName 'positionEdit']),'string',mat2str(varargin{4})); end;
         if length(varargin)>4&~isempty(varargin{5}), set(findobj(fig,'tag',[typeName 'velocitiesEdit']),'userdata',varargin{5}); end;
         if length(varargin)>5&~isempty(varargin{6}), set(findobj(fig,'tag',[typeName 'GoodCB']),'value',varargin{6}); end;
@@ -28,7 +28,7 @@ switch command,
     case 'GetVars',
         if nargout>0, varargout{1}=get(findobj(fig,'tag',[typeName 'TestEdit']),'string'); end;
         if nargout>1, varargout{2}=get(findobj(fig,'tag',[typeName 'velocitiesEdit']),'string'); end;
-        if nargout>2, varargout{3}=get(findobj(fig,'tag',[typeName 'ISIEdit']),'string'); end;
+        if nargout>2, varargout{3}=get(findobj(fig,'tag',[typeName 'RepsISIWidthEdit']),'string'); end;
         %if nargout>3, varargout{4}=str2mat(get(findobj(fig,'tag',[typeName 'positionEdit']),'string')); end;
         if nargout>4, varargout{5}=get(findobj(fig,'tag',[typeName 'velocitiesEdit']),'userdata'); end;
         if nargout>5, varargout{6}=get(findobj(fig,'tag',[typeName 'GoodCB']),'value'); end;
@@ -37,7 +37,6 @@ switch command,
     case 'RunBt',
         gratCtrl
         [ps,reps,isi,randomize,blank]=gratingcontrolsheetlet_process(fig, gratCtrl, ds, [gratCtrl 'GetVars']);
-        reps = 30;
         p=getparameters(ps);
         p.dispprefs = {'BGposttime',isi};
 	monitordistance = p.distance;
@@ -50,14 +49,17 @@ switch command,
 		signs = [1 -1];
 	end;
         try, velocities = eval([velocitiesstr]); catch, errordlg(['Error in velocities']); error('Error in velocities'); end;
-        try, isi_here = eval([isistr]); catch, errordlg(['Error in isi string']); error('Error in isi string'); end;
+        try, repsisiwidth = eval([repsisiwidthstr]); catch, errordlg(['Error in repsisiwidth string']); error('Error in repsisiwidth string'); end;
+	reps = repsisiwidth(1);
+	isi = repsisiwidth(2);
+	width = repsisiwidth(3);
         p.dispprefs = {'BGposttime',isi};
         p.contrast = 1;
         base = periodicstim(p);
         [newrect,dist,screenrect] = getscreentoolparams;
 	ctrx = mean(newrect([3 1])); ctry = mean(newrect([2 4]));
         foreachstimdolocal({'base'},'recenterstim',{'rect',newrect,'screenrect',screenrect,'params',1});
-        thescript = makebarvelocity(angles,velocities,ctrx,ctry,[1 0],monitordistance);
+        thescript = makebarvelocity(angles,velocities,ctrx,ctry,[1 0],monitordistance,width);
         if blank, thescript = addblankstim(thescript,mngray); end;
         thescript = setDisplayMethod(thescript,randomize,reps);
         test=RunScriptRemote(ds,thescript,saveit,0,1);
@@ -65,12 +67,12 @@ switch command,
     case 'RestoreVarsBt',
         fname = get(findobj(fig,'tag',[typeName 'RestoreVarsBt']),'userdata');
         if isempty(fname), error(['Empty filename for ' typeName 'RestoreVarsBt']); end;
-        g = load(fname,['lineweightsheet' typeName],'-mat'); g=getfield(g,['lineweightsheet' typeName]);
+        g = load(fname,['barvelocitysheet' typeName],'-mat'); g=getfield(g,['barvelocitysheet' typeName]);
         barvelocitysheetlet_process(fig,typeName,ds,[typeName 'SetVars'],g{:});
     case 'SaveVarsBt',
         fname = get(findobj(fig,'tag',[typeName 'SaveVarsBt']),'userdata');
         if isempty(fname), error(['Empty filename for ' typeName 'SaveVarsBt']); end;
-        eval(['barvelocitysheet' typeName '={testName,velocitiesstr,isistr,preference,gratCtrl,GoodCB,prefCB,refsh};']);
+        eval(['barvelocitysheet' typeName '={testName,velocitiesstr,repsisiwidthstr,preference,gratCtrl,GoodCB,prefCB,refsh};']);
         eval(['save ' fname ' barvelocitysheet' typeName ' -append -mat']);
     case 'AddDBBt',
         refsh='ref',
