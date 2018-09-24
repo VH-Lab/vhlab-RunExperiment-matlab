@@ -17,6 +17,10 @@ B_seq_steps = 8*ones(1,size(B_seq,1));
 
 B = [ 8 8 8 8 8 8 8 8];
 
+S_seq = getfield(load('S_sequences.mat','-mat'),'S_sequences');
+S_seq_steps = 8*ones(1,size(B_seq,1));
+
+
 command = command(length(typeName)+1:end);
 
 command,
@@ -148,9 +152,18 @@ switch command,
 		case {29},
         		[newrect,dist,screenrect] = getscreentoolparams;
 			myscript = makeorthogonaltrainingstim(periodicstim(p), [0:30:360-30], screenrect, 0);
+        case {30,31,32,33,34,35,36,37,38,39},
+			seq = methodPopupValue - 29;
+			p.angle = [angle];
+			p.flickerType = 0;
+			p.animType = 4;
+			p.imageType = 2;
+			p.loops = 0;
+			p.phaseSteps = S_seq_steps(seq);
+			p.phaseSequence = S_seq(seq,:);
 	end;
 
-        if methodPopupValue < 28,
+        if methodPopupValue < 28 | methodPopupValue>29,
 		myps=periodicscript(p);
         	[newrect,dist,screenrect] = getscreentoolparams;
 	        foreachstimdolocal({'myps'},'recenterstim',{'rect',newrect,'screenrect',screenrect,'params',1});

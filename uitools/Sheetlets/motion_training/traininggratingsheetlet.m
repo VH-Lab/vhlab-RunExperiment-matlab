@@ -54,7 +54,7 @@ hlist = [hlist h];
 h = uicontrol(txt,'position',[upperLeft(1)+40 upperLeft(2)-30 75 20],'string',['Method:'],'Tag',[typeName 'MethodTxt'], 'horizontalalignment', 'left');
 hlist = [hlist h];
 
-h = uicontrol(popup,'position',[upperLeft(1)+105 upperLeft(2)-30 125 20],'string',{'Bidirectional','Unidirectional','Counterphase--single sPhase','Flash--randomized sPhase','4-directional','8-directional','Seq A1','Seq A2','Seq A3','Seq A4','Seq A5','Seq A6','Seq A7','Seq A8','Seq B1','Seq B2','Seq B3','Seq B4','Seq B5','Seq B6','Seq B7','Seq B8','Seq B9','Seq B10','Seq B11','Seq B12','Field', 'OrthAlternating','Short Gratings'},'Tag',[typeName 'methodPopup']);
+h = uicontrol(popup,'position',[upperLeft(1)+105 upperLeft(2)-30 125 20],'string',{'Bidirectional','Unidirectional','Counterphase--single sPhase','Flash--randomized sPhase','4-directional','8-directional','Seq A1','Seq A2','Seq A3','Seq A4','Seq A5','Seq A6','Seq A7','Seq A8','Seq B1','Seq B2','Seq B3','Seq B4','Seq B5','Seq B6','Seq B7','Seq B8','Seq B9','Seq B10','Seq B11','Seq B12','Field', 'OrthAlternating','Short Gratings','Seq S1', 'Seq S2', 'Seq S3', 'Seq S4', 'Seq S5', 'Seq S6', 'Seq S7', 'Seq S8', 'Seq S9', 'Seq S10'},'Tag',[typeName 'methodPopup']);
 hlist = [hlist h];
 
 h = uicontrol(cb,'position',[upperLeft(1)+110+125+5 upperLeft(2)-30 80 20],'string','Acquire','Tag',[typeName 'AcquireCB']);
