@@ -65,7 +65,7 @@ switch command,
         myps=periodicscript(p); 
         [newrect,dist,screenrect] = getscreentoolparams;
         foreachstimdolocal({'myps'},'recenterstim',{'rect',newrect,'screenrect',screenrect,'params',1});
-        if strcmp(parameter,'tFrequency')|strcmp(parameter2,'tFrequency'),
+        if strcmp(parameter,'tFrequency')|strcmp(parameter2,'tFrequency')|strcmp(parameter3,'tFrequency'),
             for i=1:numStims(myps),
                 p = getparameters(get(myps,i));
                 p.nCycles = max([1 round(mystimdur*p.tFrequency/(p.loops+1))]);
