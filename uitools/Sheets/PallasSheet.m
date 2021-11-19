@@ -1,4 +1,4 @@
-function MarjenaSheet(command, fig)
+function PallasSheet(command, fig)
 
 if nargin==0
     command='init';
@@ -14,7 +14,7 @@ switch command
     case 'init'
         fig=drawsheet; 
 	set(fig,'name','Pallas Sheet');
-        MarjenaSheet ('default', fig);
+        PallasSheet('default', fig);
     case 'default'
         z = geteditor('RunExperiment');
         ud = get(z,'userdata');
@@ -46,7 +46,7 @@ switch command
         ps=periodicscript(p);
 
         gratingcontrolsheetlet_process(fig,'GratCtrl',usstruct.ds,'GratCtrlSetVars',ps,5,3,1,1);
-        gratingsheetlet_process(fig,'CoarseDir',usstruct.ds,'CoarseDirSetVars','','[0:22.5:360-22.5]','angle','','GratCtrl',0,0,'ref');
+        gratingsheetlet_process(fig,'CoarseDir',usstruct.ds,'CoarseDirSetVars','','[0:30:360-30]','angle','','GratCtrl',0,0,'ref');
         lengthwidthcontrastaperturesheetlet_process(fig,'LengthWidthCA',usstruct.ds,'LengthWidthCASetVars','','[20 40 80 140 220 320 440 560]','[-1]','[1]','GratCtrl',0,'ref');
         gratingsheetlet_process(fig,'SpatFreq',usstruct.ds,'SpatFreqSetVars','','[0.05 0.1 0.15 0.2 0.3 0.5 0.8]','sFrequency','','GratCtrl',0,0,'ref');
         gratingsheetlet_process(fig,'TempFreq',usstruct.ds,'TempFreqSetVars','','[0.5 1 2 4 8 16 32]','tFrequency','','GratCtrl',0,0,'ref');
